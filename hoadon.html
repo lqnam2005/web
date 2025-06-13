@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hóa Đơn - Food Website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+        
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fffbf0;
+      padding: 15px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .invoice-container {
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+      background: #fffbf0;
+      border: 2px solid #f5d50a;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .invoice-header {
+      background: linear-gradient(45deg, #f5d50a, #fce043);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #f5d50a;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      color: #333;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .invoice-header h1 {
+      color: #333;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    .invoice-date {
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .invoice-body {
+      padding: 20px;
+    }
+
+    .customer-info {
+      background: #fff9e6;
+      border: 1px solid #f5d50a;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .customer-info h3 {
+      color: #333;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      border-bottom: 2px solid #f5d50a;
+      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .customer-info h3 i {
+      margin-right: 8px;
+      color: #f5d50a;
+    }
+
+    .info-row {
+      margin-bottom: 8px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #333;
+      min-width: 80px;
+      margin-right: 10px;
+    }
+
+    .info-value {
+      color: #333;
+      flex: 1;
+    }
+
+    .items-section h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      border-bottom: 2px solid #f5d50a;
+      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .items-section h3 i {
+      margin-right: 8px;
+      color: #f5d50a;
+    }
+
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid #f5d50a;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .items-table thead {
+      background: #f5d50a;
+    }
+
+    .items-table th {
+      padding: 12px 8px;
+      color: #333;
+      font-weight: 600;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 2px solid #f5d50a;
+    }
+
+    .items-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #f0f0f0;
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    .items-table tbody tr:nth-child(even) {
+      background-color: #fff9e6;
+    }
+
+    .items-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-cell {
+      text-align: right;
+      font-weight: 600;
+      color: #d4691a;
+    }
+
+    .total-section {
+      background: #fff9e6;
+      border: 2px solid #f5d50a;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .total-label {
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .total-amount {
+      color: #333;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .final-total {
+      border-top: 2px solid #f5d50a;
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    .final-total .total-amount {
+      font-size: 1.5rem;
+      color: #d4691a;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 2px solid #f5d50a;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-primary {
+      background: #f5d50a;
+      color: #333;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+      color: #f5d50a;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #333;
+    }
+
+    .btn-secondary:hover {
+      background: #f5d50a;
+      color: #333;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #f5d50a;
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .invoice-container {
+        max-width: none;
+        box-shadow: none;
+        border: 1px solid #333;
+        margin: 0;
+      }
+      
+      .action-buttons {
+        display: none;
+      }
+      
+      .invoice-header {
+        background: #f5f5dc !important;
+        -webkit-print-color-adjust: exact;
+      }
+      
+      .items-table thead {
+        background: #f5f5dc !important;
+        -webkit-print-color-adjust: exact;
+      }
+      
+      .total-section, .customer-info {
+        background: #f9f9f9 !important;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+
+    .no-order {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+    }
+
+    .no-order i {
+      font-size: 3rem;
+      color: #f5d50a;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-container">
+    <div class="invoice-header" style="position: relative;">
+  <!-- QR góc trên bên phải -->
+  <img src="ablum/qr.png" alt="QR Code" style="
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    width: 150px;
+    height: auto;
+    border: 2px solid #fff;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    z-index: 10;
+  " />
+
+  <div class="logo">
+    <i class="fas fa-utensils"></i>
+    <span>Food Website</span>
+  </div>
+  <h1>HÓA ĐƠN THANH TOÁN</h1>
+  <div class="invoice-date" id="invoice_date"></div>
+</div>
+
+    
+    <div class="invoice-body">
+      <div class="customer-info">
+        <h3><i class="fas fa-user"></i>Thông tin khách hàng</h3>
+        <div class="info-row">
+          <span class="info-label">Tên:</span>
+          <span class="info-value" id="customer_name"></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">SĐT:</span>
+          <span class="info-value" id="phone"></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Địa chỉ:</span>
+          <span class="info-value" id="address"></span>
+        </div>
+      </div>
+
+      <div class="items-section">
+        <h3><i class="fas fa-receipt"></i>Chi tiết đơn hàng</h3>
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th style="width: 40%">Tên món</th>
+              <th style="width: 20%">Giá</th>
+              <th style="width: 15%">SL</th>
+              <th style="width: 25%">Thành tiền</th>
+            </tr>
+          </thead>
+          <tbody id="item_list"></tbody>
+        </table>
+      </div>
+
+      <div class="total-section">
+        <div class="total-row">
+          <span class="total-label">Tạm tính:</span>
+          <span class="total-amount" id="subtotal">0 VNĐ</span>
+        </div>
+        <div class="total-row">
+          <span class="total-label">Phí giao hàng:</span>
+          <span class="total-amount">15.000 VNĐ</span>
+        </div>
+        <div class="total-row final-total">
+          <span class="total-label">Tổng cộng:</span>
+          <span class="total-amount" id="total_amount">0 VNĐ</span>
+        </div>
+      </div>
+        
+      <div class="action-buttons">
+        <button class="btn btn-secondary" onclick="printInvoice()">
+          <i class="fas fa-print"></i> In hóa đơn
+        </button>
+        <button class="btn btn-primary" onclick="goHome()">
+          <i class="fas fa-home"></i> Về trang chủ
+        </button>
+      </div>
+
+      <div class="footer-note">
+        <p><strong>Cảm ơn quý khách đã đặt hàng!</strong></p>
+        <p>Mọi thắc mắc xin liên hệ: <strong>+84 28 1234 5678</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Hiển thị ngày hiện tại
+    document.getElementById('invoice_date').innerText = 
+      'Ngày: ' + new Date().toLocaleDateString('vi-VN');
+
+    // Sử dụng dữ liệu mẫu thay vì localStorage
+    const sampleData = {
+      customer_name: "Nguyễn Văn A",
+      phone: "0123456789", 
+      address: "123 Nguyễn Ánh Thủ, Quận 12, TP.HCM",
+      cart: [
+        { name: "Bánh Mì Thịt", price: 70000, quantity: 2 },
+        { name: "Cafe", price: 40000, quantity: 1 },
+        { name: "Pizza", price: 200000, quantity: 1 },
+        { name: "Trà Sữa", price: 35000, quantity: 2 }
+      ]
+    };
+
+    // Thử lấy dữ liệu từ localStorage, nếu không có thì dùng dữ liệu mẫu
+    let data = sampleData;
+    try {
+      const storedData = JSON.parse(localStorage.getItem('order_success'));
+      if (storedData && storedData.cart) {
+        data = storedData;
+      }
+    } catch (e) {
+      console.log("Sử dụng dữ liệu mẫu");
+    }
+
+    if (!data || !data.cart) {
+      document.querySelector('.invoice-container').innerHTML = `
+        <div class="no-order">
+          <i class="fas fa-receipt"></i>
+          <h2>Không có đơn hàng nào</h2>
+          <p>Vui lòng quay lại trang chủ để đặt hàng</p>
+          <button class="btn btn-primary" onclick="goHome()" style="margin-top: 15px;">
+            <i class="fas fa-home"></i> Về trang chủ
+          </button>
+        </div>`;
+    } else {
+      // Hiển thị thông tin khách hàng
+      document.getElementById('customer_name').innerText = data.customer_name || "Khách hàng";
+      document.getElementById('phone').innerText = data.phone || "N/A";
+      document.getElementById('address').innerText = data.address || "N/A";
+
+      // Hiển thị danh sách món ăn
+      let subtotal = 0;
+      const tbody = document.getElementById('item_list');
+
+      data.cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        tbody.innerHTML += `
+          <tr>
+            <td>${item.name}</td>
+            <td class="price-cell">${item.price.toLocaleString()} đ</td>
+            <td style="text-align: center">${item.quantity}</td>
+            <td class="price-cell">${itemTotal.toLocaleString()} đ</td>
+          </tr>`;
+      });
+
+      // Tính tổng tiền (bao gồm phí ship)
+      const shippingFee = 15000;
+      const total = subtotal + shippingFee;
+
+      document.getElementById('subtotal').innerText = subtotal.toLocaleString() + ' VNĐ';
+      document.getElementById('total_amount').innerText = total.toLocaleString() + ' VNĐ';
+    }
+
+    function goHome() {
+      try {
+        localStorage.removeItem('order_success');
+      } catch (e) {
+        console.log("Không thể xóa localStorage");
+      }
+      window.location.href = 'index.html';
+    }
+
+    function printInvoice() {
+      window.print();
+    }
+  </script>
+  
+
+</script>
+</body>
+</html>

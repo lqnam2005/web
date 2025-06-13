@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Giỏ Hàng</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .cart_container {
+      max-width: 950px;
+      margin: auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(255, 193, 7, 0.15);
+      border: 2px solid #fff3c4;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cart_container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #ffc107, #ffeb3b, #ffc107);
+    }
+
+    .cart_container h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1a1a1a;
+      font-size: 32px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .cart_container h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffc107, #ffeb3b);
+      border-radius: 2px;
+    }
+
+    .customer_info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: linear-gradient(135deg, #fffbf0 0%, #fff8e1 100%);
+      border-radius: 15px;
+      border: 1px solid #ffe082;
+    }
+
+    .customer_info label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c2c2c;
+      font-size: 15px;
+    }
+
+    .customer_info input {
+      padding: 14px 16px;
+      width: 100%;
+      border: 2px solid #ffe082;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #1a1a1a;
+      background: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    .customer_info input:focus {
+      outline: none;
+      border-color: #ffc107;
+      box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .cart_item {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #fff3c4;
+      padding: 20px 0;
+      background: #ffffff;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .cart_item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
+    }
+
+    .cart_item img {
+      width: 120px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-right: 25px;
+      border: 3px solid #fff3c4;
+      transition: all 0.3s ease;
+    }
+
+    .cart_item:hover img {
+      border-color: #ffc107;
+    }
+
+    .item_details {
+      flex: 1;
+    }
+
+    .item_details h3 {
+      margin-bottom: 8px;
+      color: #1a1a1a;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .item_details p {
+      margin-bottom: 12px;
+      color: #333333;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fffbf0;
+      padding: 8px 12px;
+      border-radius: 25px;
+      border: 2px solid #ffe082;
+    }
+
+    .quantity button {
+      background: linear-gradient(135deg, #ffc107, #ffca28);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 50%;
+      color: #1a1a1a;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quantity button:hover {
+      background: linear-gradient(135deg, #ffb300, #ffc107);
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    }
+
+    .quantity input {
+      width: 60px;
+      text-align: center;
+      border: 2px solid #ffe082;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      background: #ffffff;
+      padding: 6px;
+    }
+
+    .remove_item {
+      margin-left: 20px;
+    }
+
+    .remove_item i {
+      color: #ff6b6b;
+      font-size: 22px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 10px;
+      border-radius: 50%;
+      background: #fff5f5;
+    }
+
+    .remove_item i:hover {
+      color: #ff5252;
+      transform: scale(1.2);
+      background: #ffebee;
+    }
+
+    .cart_summary {
+      margin-top: 30px;
+      text-align: right;
+      padding: 25px;
+      background: linear-gradient(135deg, #fffbf0 0%, #fff8e1 100%);
+      border-radius: 15px;
+      border: 2px solid #ffe082;
+    }
+
+    .cart_summary h3 {
+      margin-bottom: 25px;
+      color: #1a1a1a;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .checkout_btn {
+      background: linear-gradient(135deg, #ffc107, #ffca28);
+      border: none;
+      padding: 16px 40px;
+      color: #1a1a1a;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .checkout_btn:hover {
+      background: linear-gradient(135deg, #ffb300, #ffc107);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #ffc107, #ffca28);
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, #ffb300, #ffc107);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+    }
+
+    .back-btn i {
+      font-size: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      .cart_container {
+        padding: 25px;
+      }
+      
+      .cart_item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .cart_item img {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .remove_item {
+        margin-left: 0;
+        margin-top: 15px;
+      }
+      
+      .customer_info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation cho loading */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cart_item {
+      animation: fadeIn 0.5s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+<a href="javascript:history.back()" class="back-btn">
+  <i class="fa-solid fa-arrow-left"></i> Quay lại
+</a>
+
+<div class="cart_container">
+  <h1><i class="fa-solid fa-shopping-cart" style="margin-right: 15px; color: #ffc107;"></i>Giỏ Hàng Của Bạn</h1>
+
+  <form id="orderForm">
+    <div class="customer_info">
+      <div>
+        <label for="fullname"><i class="fa-solid fa-user" style="margin-right: 8px; color: #ffc107;"></i>Họ và Tên:</label>
+        <input type="text" id="fullname" name="customer_name" placeholder="Nhập họ tên của bạn" required>
+      </div>
+      <div>
+        <label for="phone"><i class="fa-solid fa-phone" style="margin-right: 8px; color: #ffc107;"></i>Số điện thoại:</label>
+        <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+      </div>
+      <div>
+        <label for="address"><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: #ffc107;"></i>Địa chỉ giao hàng:</label>
+        <input type="text" id="address" name="address" placeholder="Nhập địa chỉ giao hàng" required>
+      </div>
+    </div>
+
+    <div id="cart_items"></div>
+
+    <div class="cart_summary">
+      <h3><i class="fa-solid fa-calculator" style="margin-right: 10px; color: #ffc107;"></i>Tổng cộng: <span id="total_price">0 VNĐ</span></h3>
+      <button type="submit" class="checkout_btn">
+        <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i>Gửi Đơn Hàng
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function renderCart() {
+    const cartContainer = document.getElementById('cart_items');
+    cartContainer.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+
+      cartContainer.innerHTML += `
+        <div class="cart_item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="item_details">
+            <h3>${item.name}</h3>
+            <p><i class="fa-solid fa-tag" style="margin-right: 5px; color: #ffc107;"></i>${item.price.toLocaleString()} VNĐ</p>
+            <div class="quantity">
+              <button onclick="updateQuantity(${index}, -1)">-</button>
+              <input type="text" value="${item.quantity}" readonly>
+              <button onclick="updateQuantity(${index}, 1)">+</button>
+            </div>
+          </div>
+          <div class="remove_item">
+            <i class="fa-solid fa-trash" onclick="removeItem(${index})"></i>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById('total_price').innerText = total.toLocaleString() + ' VNĐ';
+  }
+
+  function updateQuantity(index, change) {
+    if (cart[index].quantity + change >= 1) {
+      cart[index].quantity += change;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  renderCart();
+</script>
+<script>
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const customer_name = document.getElementById('fullname').value;
+  const phone = document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  try {
+    const res = await fetch('http://localhost:5000/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ customer_name, phone, address, cart })
+
+    });
+
+    const message = await res.text();
+    alert(message);
+
+    //
+
+
+
+    localStorage.setItem('order_success', 
+    JSON.stringify({ customer_name, phone, address, cart }));
+    localStorage.removeItem('cart');
+    location.href = 'hoadon.html';
+
+    //
+
+
+
+  } catch (error) {
+    alert("Có lỗi xảy ra khi đặt hàng!");
+    console.error(error);
+  }
+});
+
+</script>
+
+</body>
+</html>

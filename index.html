@@ -1,0 +1,848 @@
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Website</title>
+
+    <!-- CSS chính -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome (icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer" />
+
+    <!-- CKEditor -->
+    <script src="ckeditor/ckeditor.js"></script>
+
+    <!-- JS riêng của bạn -->
+    <script src="script.js" defer></script>
+</head>
+
+
+<body>
+
+    <section id="Home">
+        <nav>
+            <div class="logo">
+                <img src="ablum/logo.png">
+            </div>
+
+            <ul>
+                <li><a href="#Home">Trang Chủ</a></li>
+                <li><a href="#About">Giới thiệu</a></li>
+                <li><a href="#Menu">Thực Đơn</a></li>
+                <li><a href="#Gallary">Món top</a></li>
+                <li><a href="danhgia.html">Đánh giá</a></li>
+            </ul>
+
+            <div class="icon">
+   <div class="search_box">
+  <input type="text" id="searchInput" placeholder="Tìm món ăn...">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+
+
+    
+
+
+    <a href="giohang.html">    
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+</div>
+
+
+        </nav>
+
+        <div class="main">
+
+            <div class="men_text">
+                <h1>Thưởng thức<span>Món ngon</span><br>Một cách dễ dàng và tiện lợi</h1>
+            </div>
+
+            <div class="main_image">
+                <img src="ablum/main_img.png">
+            </div>
+
+        </div>
+
+        <p>
+            Khám phá những món ăn hấp dẫn, được chế biến từ nguyên liệu tươi ngon mỗi ngày. Dù bạn đang ở đâu, chỉ cần vài cú nhấp chuột là bữa ăn nóng hổi đã sẵn sàng trước cửa nhà bạn.
+Nhanh chóng – Tiện lợi – Đậm đà hương vị!
+
+
+        </p>
+     <div class="main_btn">
+    <a href="#Menu">Khám phá thực đơn</a>
+    <i class="fa-solid fa-angle-right"></i>
+</div>
+
+
+       
+
+
+    </section>
+
+
+
+    <!--About-->
+
+    <div class="about" id="About">
+        <div class="about_main">
+
+            <div class="image">
+                <img src="ablum/Food-Plate.png">
+            </div>
+
+            <div class="about_text">
+                <h1><span>About</span>VN </h1>
+                <h3>Tại sao chọn chúng tôi?</h3>
+                <p>
+                    Chúng tôi luôn đặt chất lượng và trải nghiệm của khách hàng lên hàng đầu. Với đội ngũ đầu bếp chuyên nghiệp, nguyên liệu tươi ngon mỗi ngày và dịch vụ tận tâm, chúng tôi cam kết mang đến cho bạn những bữa ăn ngon miệng và đáng nhớ.
+Sự hài lòng của bạn chính là động lực để chúng tôi không ngừng hoàn thiện và phát triển.
+                </p>
+            </div>
+
+        </div>
+
+       <a href="https://pasgo.vn/chuoi-nha-hang/nha-hang-thai-food-1101" class="about_btn" target="_blank">Tìm hiểu thêm</a>
+
+
+    </div>
+
+
+
+    <!--Menu-->
+
+    <div class="menu" id="Menu">
+        <h1>Thực<span>Đơn</span></h1>
+
+        <div class="menu_box">
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/buger.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Bánh Mì Thịt </h2>
+                    <p>
+                        Bánh mì kẹp thịt là món ăn gồm bánh mì giòn, thịt và các loại rau sống, kèm sốt hoặc gia vị tạo nên hương vị đậm đà.
+                    </p>
+                    <h3>70.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Bánh Mì Thịt" 
+   data-price="70000" 
+   data-image="ablum/buger.jpg"
+                    >Đặt món</a>
+
+
+                </div>
+
+            </div> 
+            
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/pasta.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Lòng Xào </h2>
+                    <p>
+                        Lòng xào là món ăn được chế biến từ lòng heo, xào cùng gia vị, hành, ớt và rau thơm, tạo ra hương vị đậm đà, thơm ngon.
+                    </p>
+                    <h3>50.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                     <a href="#" class="menu_btn" data-name="Lòng Xào"
+   data-price="70000" 
+   data-image="ablum/pasta.jpg"
+                     >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/lasagna.webp">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Bánh Phô Mai </h2>
+                    <p>
+                        Bánh pho mai là món bánh ngọt với vỏ mềm, nhân pho mai béo ngậy, thường được nướng hoặc hấp.
+                    </p>
+                    <h3>100.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn"data-name="Bánh Phô Mai"
+   data-price="70000" 
+   data-image="ablum/lasagna.webp"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/chocolate_Drink.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Cafe  </h2>
+                    <p>
+                       Cà phê là loại cà phê nổi tiếng với hương vị đậm đà, mạnh mẽ. Cà phê thường có vị đắng, thơm, và là đặc sản của Việt Nam.
+                    </p>
+                    <h3>40.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Cafe"
+   data-price="70000" 
+   data-image="ablum/chocolate_Drink.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/pizza.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Pizza</h2>
+                    <p>
+                        Pizza là món ăn có đế bánh mỏng, phủ sốt cà chua, phô mai và các loại topping như thịt, rau, hoặc hải sản, sau đó được nướng giòn.
+
+                    </p>
+                    <h3>200.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Pizza"
+   data-price="70000" 
+   data-image="ablum/pizza.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/Hot_dog.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Hot Dog</h2>
+                    <p>
+                        Hotdog là món ăn gồm xúc xích kẹp trong bánh mì, thường được thêm gia vị như mù tạt, ketchup, hành, hoặc dưa chuột.
+
+                    </p>
+                    <h3>120.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Hot Dog"
+   data-price="70000" 
+   data-image="ablum/Hot_dog.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/juse.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Ép Trái Cây</h2>
+                    <p>
+                        Ép trái cây là quá trình xay, ép để lấy nước từ trái cây tươi, tạo ra đồ uống bổ dưỡng và giải khát.
+
+                    </p>
+                    <h3>20.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Ép Trái Cây"
+   data-price="70000" 
+   data-image="ablum/juse.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/biryani.webp">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Cơm Gà </h2>
+                    <p>
+                        Ép cơm gà là món cơm được nấu cùng nước luộc gà, ăn kèm với thịt gà luộc, rau sống và chén nước mắm chua ngọt.
+
+                    </p>
+                    <h3>90.000 VNĐ</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn"data-name="Cơm Gà" 
+   data-price="70000" 
+   data-image="ablum/biryani.webp"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/chocolate.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Chocolate</h2>
+                    <p>
+                        Chocolate là món tráng miệng, thường kết hợp với các nguyên liệu khác như kem, trái cây hoặc bánh quy.
+
+                    </p>
+                    <h3>120.000 VNĐ </h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Chocolate"
+   data-price="70000" 
+   data-image="ablum/chocolate.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/ice_cream.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Kem</h2>
+                    <p>
+                        Kem là một món ăn lạnh, thường được làm từ sữa, kem tươi, đường và các thành phần hương vị trái cây, socola, hoặc các loại hạt. 
+                    </p>
+                    <h3>40.000 VNĐ </h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Kem"
+   data-price="70000" 
+   data-image="ablum/ice_cream.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/Spanchi.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Bông lan </h2>
+                    <p>
+                        Bông lan là một loại bánh ngọt có kết cấu mềm mịn, xốp, làm bằng nguyên liệu hàng đầu thế giới.
+                    </p>
+                    <h3>30.000 VNĐ </h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Bông lan"
+   data-price="70000" 
+   data-image="ablum/Spanchi.jpg"
+                    >Đặt món</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="ablum/sandwich.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Bánh kẹp </h2>
+                    <p>
+                        Bánh có vị ngọt tự nhiên, dai, và thường được ăn kèm với đậu xanh hoặc nhân dừa. Đặc sản bánh kẹp Việt Nam.
+                    </p>
+                    <h3>20.000 VNĐ </h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn" data-name="Bánh kẹp"
+   data-price="70000" 
+   data-image="ablum/sandwich.jpg"
+                    >Đặt món</a>
+                </div>
+            </div>
+    <div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/phopo.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Phở Bò Tái </h2>
+        <p>
+            Món ăn truyền thống với nước dùng thơm ngon, bánh phở mềm và thịt bò tái chín.
+        </p>
+        <h3>60.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Phở Bò Tái"
+   data-price="70000" 
+   data-image="ablum/phopo.jgp"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/bunbohue.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Bún Bò Huế</h2>
+        <p>
+            Nước lèo đậm đà, thơm mùi sả và mắm ruốc, ăn cùng bún, thịt bò, giò heo và rau sống.
+        </p>
+        <h3>65.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Bún Bò Huế"
+   data-price="70000" 
+   data-image="ablum/bunbohue.jpg"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/goicuon.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Gỏi Cuốn</h2>
+        <p>
+            Cuốn tôm, thịt, rau sống và bún trong bánh tráng, chấm cùng nước mắm chua ngọt.
+        </p>
+        <h3>40.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Gỏi Cuốn"
+   data-price="70000" 
+   data-image="ablum/goicuon.jpg"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/banhxeo.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Bánh Xèo</h2>
+        <p>
+            Bánh giòn rụm nhân tôm, thịt và giá, ăn kèm rau sống và nước chấm chua ngọt.
+        </p>
+        <h3>45.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Bánh Xèo"
+   data-price="70000" 
+   data-image="ablum/banhxeo.jpg"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/banhcuonnong.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Bánh Cuốn</h2>
+        <p>
+            Bánh mỏng mềm, nhân thịt băm và mộc nhĩ, ăn kèm chả lụa, hành phi và nước mắm.
+        </p>
+        <h3>35.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn"  data-name="Bánh Cuốn"
+   data-price="70000" 
+   data-image="ablum/banhcuonnong.jpg"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/chagio.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Chả Giò</h2>
+        <p>
+            Món cuốn chiên giòn nhân thịt, miến và rau củ, chấm cùng nước mắm tỏi ớt.
+        </p>
+        <h3>30.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Chả Giò"
+   data-price="70000" 
+   data-image="ablum/chagio.jpg"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/comtam.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Cơm Tấm</h2>
+        <p>
+            Món ăn đặc trưng Sài Gòn gồm sườn nướng, trứng ốp la, bì, chả trứng và nước mắm.
+        </p>
+        <h3>55.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Cơm Tấm"
+   data-price="70000" 
+   data-image="ablum/comtam.jpg"
+        >Đặt món</a>
+    </div>
+</div>
+
+<div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/trasua.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Trà Sữa</h2>
+        <p>
+            Đồ uống mát lạnh kết hợp trà, sữa và trân châu đen dai ngon, hấp dẫn giới trẻ.
+        </p>
+        <h3>35.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Trà Sữa"
+   data-price="70000" 
+   data-image="ablum/trasua.jpg"
+        >Đặt món</a>
+    </div>
+     
+    
+</div>
+         <div class="menu_card">
+    <div class="menu_image">
+        <img src="ablum/bundau.jpg">
+    </div>
+    <div class="small_card">
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="menu_info">
+        <h2>Bún Đậu </h2>
+        <p>
+            gồm bún tươi, đậu hũ chiên giòn, chả cốm, thịt luộc và mắm tôm đậm đà, ăn kèm rau sống.
+        </p>
+        <h3>50.000 VNĐ</h3>
+        <div class="menu_icon">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <a href="#" class="menu_btn" data-name="Trà Sữa"
+   data-price="70000" 
+   data-image="ablum/trasua.jpg"
+        >Đặt món</a>
+    </div>
+     
+    
+</div>
+            </div> 
+            
+        </div>
+
+    </div>
+
+
+
+    <!--Gallary-->
+
+  <div class="gallary" id="Gallary">
+    <h1>Món <span>Top nhiều người ăn</span></h1>
+
+    <div class="gallary_image_box">
+        <div class="gallary_image">
+            <img src="ablum/phopo.jpg" alt="Phở bò">
+            <h3>Phở Bò Truyền Thống</h3>
+            <p>Sợi phở mềm, nước dùng thơm ngọt từ xương, kèm thịt bò tái.</p>
+            <a href="#" class="gallary_btn">Thử hương vị Bắc</a>
+        </div>
+
+        <div class="gallary_image">
+            <img src="ablum/chagio.jpg" alt="Chả giò">
+            <h3>Chả giò</h3>
+            <p>Thịt nướng thơm lừng ăn kèm bún, rau sống và nước mắm chua ngọt.</p>
+            <a href="#" class="gallary_btn">Khám phá món xưa</a>
+        </div>
+
+        <div class="gallary_image">
+            <img src="ablum/comtam.jpg" alt="Cơm tấm">
+            <h3>Cơm Tấm Sườn Trứng</h3>
+            <p>Sườn nướng đậm vị, trứng ốp và bì, ăn cùng mắm tỏi.</p>
+            <a href="#" class="gallary_btn">Cơm trưa ngon lành</a>
+        </div>
+
+        <div class="gallary_image">
+            <img src="ablum/goicuon.jpg" alt="Gỏi cuốn">
+            <h3>Gỏi Cuốn Tôm Thịt</h3>
+            <p>Bánh tráng cuốn rau, bún, tôm thịt chấm mắm nêm đậm đà.</p>
+            <a href="#" class="gallary_btn">Cuốn một phát mê</a>
+        </div>
+
+        <div class="gallary_image">
+            <img src="ablum/banhxeo.jpg" alt="Bánh xèo">
+            <h3>Bánh Xèo Miền Tây</h3>
+            <p>Vỏ giòn tan, nhân tôm thịt giá, cuốn rau chấm mắm chua ngọt.</p>
+            <a href="#" class="gallary_btn">Giòn rụm thơm ngon</a>
+        </div>
+
+        <div class="gallary_image">
+    <img src="ablum/trasua.jpg" alt="Trà sữa trân châu">
+    <h3>Trà Sữa Trân Châu</h3>
+    <p>Vị trà đậm đà kết hợp trân châu dai ngon – món uống quốc dân.</p>
+    <a href="#" class="gallary_btn">Mát lạnh ngày hè</a>
+    
+</div>
+<div class="gallary_image">
+    <img src="ablum/bundau.jpg" alt="Bún đậu mắm tôm">
+    <h3>Bún Đậu Mắm Tôm</h3>
+    <p>Bún tươi, đậu hũ chiên giòn, thịt luộc và chả cốm ăn kèm mắm tôm đậm đà.</p>
+    <a href="#" class="gallary_btn">Thơm ngon khó cưỡng</a>
+</div>
+
+<div class="gallary_image">
+    <img src="ablum/pizza.jpg" alt="Pizza phô mai thơm ngon">
+    <h3>Pizza Phô Mai</h3>
+    <p>Đế bánh giòn, phủ đầy phô mai kéo sợi, sốt cà chua đậm đà.</p>
+    <a href="#" class="gallary_btn">Cắn là mê ngay</a>
+</div>
+
+</div> 
+
+<footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-section about-section">
+                    <div class="logo-footer">
+                        <i class="fas fa-utensils"></i>
+                        <span>VN Food</span>
+                    </div>
+                    <p>
+                        Chúng tôi mang đến những món ăn Việt Nam truyền thống với hương vị đậm đà, 
+                        được chế biến từ nguyên liệu tươi ngon nhất. Trải nghiệm ẩm thực tuyệt vời 
+                        cùng dịch vụ tận tâm.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/FoodyVietnam" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/foody.vn_official/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                      <a href="https://www.foody.vn/?fbclid=PAZXh0bgNhZW0CMTEAAadk2KKJnN_hx4OfHZ5dJg6UFGHqkYZPW92ANa71UL__Jk7GnhxdWoqFYlzdQQ_aem_j32aYrSIz4vu2QwnWcOE1w" title="Shopee" target="_blank"><i class="fas fa-store"></i></a>
+
+                        <a href="https://www.youtube.com/@VNTFOOD" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@foodyvietnam" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section quick-links">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="#Home"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                        <li><a href="#About"><i class="fas fa-info-circle"></i> Giới Thiệu</a></li>
+                        <li><a href="#Menu"><i class="fas fa-utensils"></i> Thực Đơn</a></li>
+                        <li><a href="#Gallary"><i class="fas fa-star"></i> Món Top</a></li>
+                        
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section contact-info">
+                    <h3>Thông Tin Liên Hệ</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Nguyễn Ánh Thủ, Quận 12<br>TP. Hồ Chí Minh, Việt Nam</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+84 28 1234 5678</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@food.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>www.food.com</span>
+                    </div>
+                </div>
+
+                
+
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
