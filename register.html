@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff9e6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 320px;
+    }
+    .form-box h2 {
+      margin-bottom: 20px;
+      color: #8b4513;
+      text-align: center;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .form-box button {
+      background-color: #FFA500;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .form-box button:hover {
+      background-color: #e69500;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Đăng ký tài khoản</h2>
+    <input type="text" id="name" placeholder="Họ tên" />
+    <input type="text" id="phone" placeholder="Số điện thoại" />
+    <input type="text" id="address" placeholder="Địa chỉ" />
+    <input type="password" id="password" placeholder="Mật khẩu" />
+    <button id="registerBtn">Đăng ký</button>
+
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("registerBtn").addEventListener("click", handleRegister);
+  });
+
+  function handleRegister() {
+    const data = {
+      phone: document.getElementById("phone").value,
+      name: document.getElementById("name").value,
+      address: document.getElementById("address").value,
+      password: document.getElementById("password").value,
+    };
+
+    fetch("backend/register_user.php", {
+
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status === "success") {
+        alert("Đăng ký thành công!");
+        localStorage.setItem("loggedInPhone", data.phone);
+        localStorage.setItem("username", data.name);
+        window.location.href = "index.html";
+      } else {
+        alert(res.message || "Đăng ký thất bại!");
+      }
+    })
+    .catch(error => {
+      console.error("Lỗi fetch:", error);
+      alert("Không thể kết nối đến server!");
+    });
+  }
+</script>
+
+</body>
+</html>

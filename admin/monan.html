@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý Món ăn</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffde7;
+    }
+
+    .sidebar {
+      position: fixed;
+      width: 220px;
+      height: 100%;
+      background: #ffb300;
+      padding: 20px;
+      color: white;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    th {
+      background: #ffecb3;
+      color: #333;
+    }
+
+    .actions button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .delete {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="dashboard.html">📊 Tổng quan</a>
+    <a href="monan.html">🍽️ Quản lý món ăn</a>
+    <a href="donhang.html">🧾 Quản lý đơn hàng</a>
+    <a href="../index.html">↩️ Trang chính</a>
+  </div>
+
+  <div class="main">
+    <h1>🍽️ Danh sách món ăn</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên món</th>
+          <th>Giá</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    fetch("../backend/get_dishes.php")
+      .then(res => {
+        if (!res.ok) throw new Error("Lỗi HTTP " + res.status);
+        return res.json();
+      })
+      .then(data => {
+        const tbody = document.querySelector("tbody");
+        tbody.innerHTML = "";
+
+        data.forEach((dish, index) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${dish.name}</td>
+            <td>${dish.price.toLocaleString()} đ</td>
+            <td class="actions">
+              <button class="delete">Xóa</button>
+            </td>
+          `;
+
+          const deleteBtn = tr.querySelector(".delete");
+          deleteBtn.addEventListener("click", () => {
+            if (confirm(`Bạn có chắc muốn xóa "${dish.name}" không?`)) {
+              fetch("../backend/delete_dish.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name: dish.name })
+              })
+              .then(res => {
+                if (!res.ok) throw new Error("Lỗi khi xóa món ăn");
+                tr.remove();
+              })
+              .catch(err => {
+                alert("Xóa thất bại. Kiểm tra server.");
+                console.error(err);
+              });
+            }
+          });
+
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(err => {
+        console.error("Lỗi khi tải món ăn:", err);
+        alert("Không thể tải món ăn. Kiểm tra server hoặc dữ liệu.");
+      });
+  </script>
+</body>
+</html>

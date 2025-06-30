@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Quản lý </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffde7;
+    }
+
+    .sidebar {
+      position: fixed;
+      width: 220px;
+      height: 100%;
+      background: #ffb300;
+      padding: 20px;
+      color: white;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      color: #ff9800;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Trang chủ   </h2>
+    <a href="dashboard.html">📊 Tổng quan</a>
+    <a href="monan.html">🍽️ Quản lý món ăn</a>
+    <a href="donhang.html">🧾 Quản lý đơn hàng</a>
+    <a href="../index.html">↩️ Trang chính</a>
+  </div>
+
+ 
+  <div class="main">
+    <h1>Chào mừng, Quản lí!</h1>
+
+    <div class="card">
+      <h3>📦 Tổng đơn hàng hôm nay: <span id="orderCount"></span></h3>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Món bán chạy: <span id="topDish"></span></h3>
+    </div>
+
+    <!-- <div class="card">
+      <h3>👥 Người dùng mới: <span id="newUsers"></span></h3>
+    </div> -->
+  </div>
+
+  <script>
+    // Tổng đơn hàng 
+    fetch("../backend/get_order_count.php")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("orderCount").textContent = data.count;
+      })
+      .catch(error => console.error("Lỗi đơn hàng:", error));
+
+    // Món bán chạy nhất
+    fetch("../backend/get_top_dish.php")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("topDish").textContent = data.name;
+      })
+      .catch(error => console.error("Lỗi món ăn:", error));
+  </script>
+</body>
+</html>

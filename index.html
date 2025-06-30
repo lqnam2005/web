@@ -38,21 +38,31 @@
                 <li><a href="danhgia.html">Đánh giá</a></li>
             </ul>
 
-            <div class="icon">
-   <div class="search_box">
-  <input type="text" id="searchInput" placeholder="Tìm món ăn...">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</div>
+           <div class="icon">
+  <div class="search_box">
+    <input type="text" id="searchInput" placeholder="Tìm món ăn...">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </div>
 
+  <!-- đăng nhập / đăng ký -->
+  <div class="login-card">
+    <div class="login-buttons" id="auth-buttons">
+      <button onclick="location.href='login.html'">Đăng nhập</button>
+      <button onclick="location.href='register.html'">Đăng ký</button>
+    </div>
+    <div class="user-avatar" id="user-avatar" style="display: none; position: relative;">
+      <div class="avatar-circle" id="avatar-initials" onclick="toggleLogoutMenu()">le</div>
+      <div class="logout-menu" id="logout-menu" style="display: none; position: absolute; top: 50px; right: 0;">
+        <button onclick="logout()">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
 
-    
-
-
-    <a href="giohang.html">    
+  <a href="giohang.html">
     <i class="fa-solid fa-cart-shopping"></i>
-</a>
-
+  </a>
 </div>
+
 
 
         </nav>
@@ -699,7 +709,7 @@ Sự hài lòng của bạn chính là động lực để chúng tôi không ng
         <div class="menu_icon">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
         </div>
-        <a href="#" class="menu_btn" data-name="Trà Sữa"
+        <a href="#" class="menu_btn" data-name="Bún Đậu"
    data-price="70000" 
    data-image="ablum/trasua.jpg"
         >Đặt món</a>
@@ -844,5 +854,47 @@ Sự hài lòng của bạn chính là động lực để chúng tôi không ng
             </div>
         </div>
     </footer>
+    <script>
+  // Kiểm tra trạng thái đăng nhập khi load trang
+  document.addEventListener("DOMContentLoaded", function () {
+    const username = localStorage.getItem("username");
+    if (username) {
+      document.getElementById("auth-buttons").style.display = "none";
+      document.getElementById("user-avatar").style.display = "flex";
+      document.getElementById("avatar-initials").textContent = username.slice(0, 2).toLowerCase();
+    }
+  });
+</script>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const username = localStorage.getItem("username");
+    if (username) {
+      document.getElementById("auth-buttons").style.display = "none";
+      document.getElementById("user-avatar").style.display = "flex";
+      document.getElementById("avatar-initials").textContent = username.slice(0, 2).toLowerCase();
+    }
+  });
+
+  function toggleLogoutMenu() {
+    const menu = document.getElementById("logout-menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  function logout() {
+    localStorage.removeItem("username");
+    window.location.reload();
+  }
+
+  window.addEventListener("click", function (e) {
+    const avatar = document.getElementById("user-avatar");
+    if (!avatar.contains(e.target)) {
+      document.getElementById("logout-menu").style.display = "none";
+    }
+  });
+</script>
+
 </body>
 </html>

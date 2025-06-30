@@ -406,46 +406,54 @@
 
   renderCart();
 </script>
+
 <script>
-document.getElementById('orderForm').addEventListener('submit', async function(e) {
+document.getElementById("orderForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const customer_name = document.getElementById('fullname').value;
-  const phone = document.getElementById('phone').value;
-  const address = document.getElementById('address').value;
+  const customerData = {
+    customer_name: document.getElementById("fullname").value,
+    phone: document.getElementById("phone").value,
+    address: document.getElementById("address").value,
+    cart: JSON.parse(localStorage.getItem("cart") || "[]")
+  };
 
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  try {
-    const res = await fetch('http://localhost:5000/api/order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ customer_name, phone, address, cart })
-
+  fetch("backend/save_order.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(customerData)
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") {
+        localStorage.setItem("order_success", JSON.stringify(customerData));
+        localStorage.removeItem("cart");
+        window.location.href = "hoadon.html";
+      } else {
+        alert("Lỗi khi lưu đơn hàng.");
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Có lỗi xảy ra khi gửi đơn hàng.");
     });
-
-    const message = await res.text();
-    alert(message);
-
-    //
-
-
-
-    localStorage.setItem('order_success', 
-    JSON.stringify({ customer_name, phone, address, cart }));
-    localStorage.removeItem('cart');
-    location.href = 'hoadon.html';
-
-    //
-
-
-
-  } catch (error) {
-    alert("Có lỗi xảy ra khi đặt hàng!");
-    console.error(error);
-  }
 });
 
+</script>
+<script>
+window.onload = function () {
+  const nameField = document.getElementById("name");
+  const phoneField = document.getElementById("phone");
+  const addressField = document.getElementById("address");
+
+  const savedName = localStorage.getItem("username");
+  const savedPhone = localStorage.getItem("loggedInPhone");
+  const savedAddress = localStorage.getItem("userAddress");
+
+  if (nameField && savedName) nameField.value = savedName;
+  if (phoneField && savedPhone) phoneField.value = savedPhone;
+  if (addressField && savedAddress) addressField.value = savedAddress;
+};
 </script>
 
 </body>

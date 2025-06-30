@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý Đơn hàng</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffde7;
+    }
+
+    .sidebar {
+      position: fixed;
+      width: 220px;
+      height: 100%;
+      background: #ffb300;
+      padding: 20px;
+      color: white;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    th {
+      background: #ffecb3;
+      color: #333;
+    }
+
+    .status {
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: inline-block;
+    }
+
+    .pending {
+      background: #ff9800;
+      color: white;
+    }
+
+    .completed {
+      background: #4caf50;
+      color: white;
+    }
+
+    .actions button {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .confirm {
+      background: #2196f3;
+      color: white;
+    }
+
+    .delete {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="dashboard.html">📊 Tổng quan</a>
+    <a href="monan.html">🍽️ Quản lý món ăn</a>
+    <a href="donhang.html">🧾 Quản lý đơn hàng</a>
+    <a href="../index.html">↩️ Trang chính</a>
+  </div>
+
+  <div class="main">
+    <h1>🧾 Danh sách đơn hàng</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Khách hàng</th>
+          <th>SĐT</th>
+          <th>Địa chỉ</th>
+         
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+  fetch("../backend/get_orders.php")
+    .then(res => {
+      if (!res.ok) throw new Error("Lỗi HTTP " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data)) {
+        throw new Error("Dữ liệu không hợp lệ");
+      }
+
+      const tbody = document.querySelector("tbody");
+      tbody.innerHTML = "";
+
+      data.forEach((order, index) => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${order.customer_name}</td>
+            <td>${order.phone}</td>
+            <td>${order.address}</td>
+            <td><span class="status ${order.status === 'completed' ? 'completed' : 'pending'}">
+              ${order.status === 'completed' ? 'Đã giao' : 'Chờ xử lý'}
+            </span></td>
+            <td class="actions">
+              <button class="confirm" onclick="confirmOrder(${order.id})">Xác nhận</button>
+              <button class="delete" onclick="deleteOrder(${order.id})">Xóa</button>
+            </td>
+          </tr>`;
+      });
+    })
+    .catch(err => {
+      console.error("Lỗi khi tải đơn hàng:", err);
+      alert("Không thể tải đơn hàng. Kiểm tra kết nối hoặc dữ liệu server.");
+    });
+
+  function confirmOrder(id) {
+    fetch(`../backend/update_order.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, status: 'completed' })
+    }).then(() => location.reload());
+  }
+
+  function deleteOrder(id) {
+    if (confirm("Xóa đơn hàng này?")) {
+      fetch(`../backend/delete_order.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      }).then(() => location.reload());
+    }
+  }
+</script>
+
+</body>
+</html>
